@@ -6,7 +6,7 @@
   "scripts": {
     "compile": "NODE_PATH=. babel --presents env --ignore *.test.js -d lib src",
     "start": "NODE_PATH=. node .",
-    "test": "NODE_PATH=. babel-node `which tape` src/**/*.test.js | `which faucet`",
+    "test": "NODE_PATH=. babel-node `which tape` 'src/**/*.test.js' | faucet",
     "lint": "NODE_PATH=. eslint src",
     "precommit": "yarn test",
     "prepush": "yarn test"
