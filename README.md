@@ -45,6 +45,24 @@ However, this library is still useful for detecting disposable email addresses a
 
 You should not. It is still work in progress initiated as an iterative means to level up my JavaScript skills. See also [why it is not guaranteed to work](#does-pokemail-always-work).
 
+### Why not utilise the power of JavaScript Promises?
+
+With native Promise support far from widespread and the presence of so many
+implementations, I don't want to impose my decision of which one to use on the
+consumer of this library.
+
+Whether `bluebird`, `es6-promise` or native `Promise` (ES2015) constructor, it
+is up to you to "promisify" this library's API with your favourite implementation.
+
+For example using the [pokemail() function](src/pokemail.js) with Bluebird might
+look like this
+
+```javascript
+const Promise = require('bluebird')
+const promisedPokemail = Promise.promisify(require('pokemail'))
+```
+
+
 # Credits :heart:
 
 * This project is heavily inspired by [MailTester.com](http://www.mailtester.com)

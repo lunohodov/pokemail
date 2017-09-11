@@ -1,7 +1,7 @@
 import checkSyntax from './checks/syntax'
 
-function pokemail(str) {
-  const successResult = {
+function pokemail(str, cb) {
+  let result = {
     result: 'deliverable',
     reason: '',
     disposable: false,
@@ -9,17 +9,14 @@ function pokemail(str) {
     success: true,
   }
 
-  return new Promise((resolve) => {
-    if (!checkSyntax(str)) {
-      const result = Object.assign({}, successResult, {
-        result: 'undeliverable',
-        reason: 'invalid_email',
-        success: false,
-      })
-      resolve(result)
-    }
-    resolve(successResult)
-  })
+  if (!checkSyntax(str)) {
+    result = Object.assign(result, {
+      result: 'undeliverable',
+      reason: 'invalid_email',
+      success: false,
+    })
+  }
+  cb(null, result)
 }
 
 export default pokemail
