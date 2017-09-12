@@ -4,12 +4,12 @@
   "description": "Check whether an email exists and if there are problems with it",
   "main": "lib/pokemail.js",
   "scripts": {
-    "compile": "NODE_PATH=. babel --presents env --ignore *.test.js -d lib src",
-    "start": "NODE_PATH=. node .",
-    "test": "NODE_PATH=. babel-node `which tape` 'src/**/*.test.js' | faucet",
-    "lint": "NODE_PATH=. eslint src",
-    "precommit": "yarn test",
-    "prepush": "yarn test"
+    "compile": "babel --presents env --ignore *.test.js -d lib src",
+    "start": "node .",
+    "test": "tape -r babel-register 'src/**/*.test.js' | faucet",
+    "lint": "eslint src",
+    "precommit": "npm test",
+    "prepush": "npm test"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
     "blue-tape": "^1.0.0",
     "eslint": "^4.6.1",
     "eslint-config-airbnb-base": "^12.0.0",
