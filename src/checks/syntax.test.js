@@ -1,7 +1,7 @@
 import test from 'tape'
 import checkSyntax from './syntax'
 
-test('check syntax returns false for invalid email', (t) => {
+test('check-syntax dismisses invalid email', (t) => {
   const testEmails = [
     'invalidemail@',
     'invalid.com',
@@ -35,7 +35,7 @@ test('check syntax returns false for invalid email', (t) => {
   t.end()
 })
 
-test('check syntax returns true for valid email', (t) => {
+test('check-syntax accepts valid email', (t) => {
   const testEmails = [
     'foo@bar.com',
     'x@x.au',

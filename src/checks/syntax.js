@@ -86,4 +86,14 @@ function checkSyntax(str) {
   return true
 }
 
-export default checkSyntax
+function checkSyntaxWithCallback(str, cb) {
+  const isValid = checkSyntax(str)
+
+  if (cb) {
+    cb(null, isValid)
+  }
+
+  return isValid
+}
+
+export default checkSyntaxWithCallback
