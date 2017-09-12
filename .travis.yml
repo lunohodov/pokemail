@@ -4,3 +4,5 @@ node_js:
   - "lts/*"
   - "5"
   - "4"
+notifications:
+  email: false
