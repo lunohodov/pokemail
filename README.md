@@ -1,5 +1,7 @@
 # Email verification beyond regular expressions
 
+[![Build Status](https://travis-ci.org/lunohodov/pokemail.svg?branch=master)](https://travis-ci.org/lunohodov/pokemail)
+
 Pokemail `[pəʊkimeɪl]` is a [Node.js](http://nodejs.org) library for email address verification.
 
 Apart from mere syntax verification, it talks to DNS and SMTP servers to determine the validity and
