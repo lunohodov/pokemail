@@ -3,7 +3,7 @@ import checkDisposable from './disposable'
 
 const it = (desc, callback) => tape(`check-disposable ${desc}`, callback)
 
-it('check-disposable detects disposable email', (t) => {
+it('detects disposable email', (t) => {
   t.plan(1)
 
   const email = 'pokemail@mailinator.com'
@@ -14,7 +14,7 @@ it('check-disposable detects disposable email', (t) => {
   })
 })
 
-it('check-disposable detects non-disposable email', (t) => {
+it('detects non-disposable email', (t) => {
   t.plan(1)
 
   const email = 'pokemail@gmail.com'
