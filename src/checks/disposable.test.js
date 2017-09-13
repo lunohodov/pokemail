@@ -1,7 +1,9 @@
-import test from 'tape'
+import tape from 'tape'
 import checkDisposable from './disposable'
 
-test('check-disposable detects disposable email', (t) => {
+const it = (desc, callback) => tape(`check-disposable ${desc}`, callback)
+
+it('check-disposable detects disposable email', (t) => {
   t.plan(1)
 
   const email = 'pokemail@mailinator.com'
@@ -12,7 +14,7 @@ test('check-disposable detects disposable email', (t) => {
   })
 })
 
-test('check-disposable detects non-disposable email', (t) => {
+it('check-disposable detects non-disposable email', (t) => {
   t.plan(1)
 
   const email = 'pokemail@gmail.com'

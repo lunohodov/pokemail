@@ -1,7 +1,9 @@
 import test from 'blue-tape'
 import pokemail from './pokemail'
 
-test('verification marks a valid email as deliverable', (t) => {
+const it = (desc, callback) => test(`pokemail ${desc}`, callback)
+
+it('marks a valid email as deliverable', (t) => {
   t.plan(3)
   pokemail('lunohodov@gmail.com', (err, status) => {
     t.is(status.result, 'deliverable')
@@ -11,7 +13,7 @@ test('verification marks a valid email as deliverable', (t) => {
   })
 })
 
-test('verification marks ill formatted email as undeliverable', (t) => {
+it('marks ill formatted email as undeliverable', (t) => {
   t.plan(3)
   pokemail('test@invalid.co m', (err, status) => {
     t.is(status.result, 'undeliverable')
@@ -21,7 +23,7 @@ test('verification marks ill formatted email as undeliverable', (t) => {
   })
 })
 
-test.skip('verification marks disposable email as deliverable', (t) => {
+it('marks disposable email as deliverable', (t) => {
   t.plan(4)
   pokemail('pokemail@mailinator.com', (err, status) => {
     t.is(status.result, 'deliverable')
