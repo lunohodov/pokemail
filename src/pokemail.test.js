@@ -1,35 +1,68 @@
 import test from 'tape'
 import pokemail from './pokemail'
 
-const it = (desc, callback) => test(`pokemail ${desc}`, callback)
+const testData = [
+  {
+    name: 'ill formatted email is undeliverable',
+    expected: {
+      result: 'undeliverable',
+      reason: 'invalid_email',
+      disposable: false,
+      email: 'test@invalid.co m',
+      success: true,
+    },
+  },
+  {
+    name: 'disposable email is deliverable',
+    expected: {
+      result: 'deliverable',
+      reason: 'accepted_email',
+      disposable: true,
+      email: 'pokemail@mailinator.com',
+      success: true,
+    },
+  },
+  {
+    name: 'user@ip4 is undeliverable',
+    expected: {
+      result: 'undeliverable',
+      reason: 'invalid_email',
+      disposable: false,
+      email: 'pokemail@127.0.0.1',
+      success: true,
+    },
+  },
+  {
+    name: 'user@ip6 is undeliverable',
+    expected: {
+      result: 'undeliverable',
+      reason: 'invalid_email',
+      disposable: false,
+      email: 'pokemail@2a00:1450:400e:809::200e',
+      success: true,
+    },
+  },
+  {
+    name: 'email domain with MX record is deliverable',
+    expected: {
+      result: 'deliverable',
+      reason: 'accepted_email',
+      disposable: false,
+      email: 'lunohodov@gmail.com',
+      success: true,
+    },
+  },
+]
 
-it('marks a valid email as deliverable', (t) => {
-  t.plan(3)
-  pokemail('lunohodov@gmail.com', (err, status) => {
-    t.is(status.result, 'deliverable')
-    t.is(status.reason, 'accepted_email')
-    t.is(status.success, true)
-    t.end()
+testData.forEach((data) => {
+  const { name, expected, expected: { email } } = data
+
+  test(name, (t) => {
+    t.plan(1)
+    pokemail(email, (err, actual) => {
+      t.deepEqual(actual, expected)
+      t.end()
+    })
   })
 })
 
-it('marks ill formatted email as undeliverable', (t) => {
-  t.plan(3)
-  pokemail('test@invalid.co m', (err, status) => {
-    t.is(status.result, 'undeliverable')
-    t.is(status.reason, 'invalid_email')
-    t.is(status.success, true)
-    t.end()
-  })
-})
-
-it('marks disposable email as deliverable', (t) => {
-  t.plan(4)
-  pokemail('pokemail@mailinator.com', (err, status) => {
-    t.is(status.result, 'deliverable')
-    t.is(status.reason, 'accepted_email')
-    t.is(status.disposable, true)
-    t.is(status.success, true)
-    t.end()
-  })
-})
