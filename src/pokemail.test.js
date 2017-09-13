@@ -1,4 +1,4 @@
-import test from 'blue-tape'
+import test from 'tape'
 import pokemail from './pokemail'
 
 const it = (desc, callback) => test(`pokemail ${desc}`, callback)
