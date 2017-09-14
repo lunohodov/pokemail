@@ -31,7 +31,7 @@ it('accepts hostname with an MX record', (t) => {
 
 it('rejects hostname without MX record', (t) => {
   t.plan(2)
-  checkReachability('some-invalid-host-pokemail.com', (err, actual) => {
+  checkReachability('test@some-invalid-host-pokemail.com', (err, actual) => {
     t.is(err, null)
     t.is(actual, false)
     t.end()

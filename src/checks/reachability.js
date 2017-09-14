@@ -1,23 +1,20 @@
 import { isIP } from 'net'
-import { URL } from 'url'
 import dns from 'dns'
 
-const extractHostname = (email) => {
-  if (email && email.length > 0) {
-    try {
-      return (new URL(`mailto://${email}`)).hostname
-    } catch (e) {
-      // Pass
-    }
+const extractHostname = (str) => {
+  if (typeof str !== 'string' || str.length < 2) {
+    return ''
   }
 
-  return null
+  const chunks = str.split('@')
+
+  return chunks.length > 1 ? chunks[1] : ''
 }
 
 function checkReachability(email, callback) {
   const hostname = extractHostname(email)
 
-  if (!hostname || isIP(hostname)) {
+  if (hostname.length === 0 || isIP(hostname)) {
     callback(new TypeError('A valid hostname argument is required'))
     return
   }
