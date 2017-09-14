@@ -55,7 +55,11 @@ const testData = [
 ]
 
 testData.forEach((data) => {
-  const { name, expected, expected: { email } } = data
+  /* eslint-disable prefer-destructuring */
+  const name = data.name
+  const expected = data.expected
+  const email = expected.email
+  /* eslint-enable prefer-destructuring */
 
   test(name, (t) => {
     t.plan(1)
