@@ -11,9 +11,9 @@ In order to verify an email address, a series of checks are performed:
 
 * **Syntax check**: Verify whether the format of the email address is correct i.e has an `@` sign
 * **Domain/MX records check**: Check if the DNS records hold any MX entries for the email's domain. If there aren't, the domain the email points to can not receive emails
-* **Role-based account detection**: TODO
+* **Role-based account detection (TODO)**: Check whether the address is defined by a job rather than a person i.e `support@domain.com`
 * **Disposable email address**: Check whether the domain name of the address is used for temporary email addresses
-* **Verification with SMTP server**: A SMTP connection with the server responsible for the email will be attempted. In case the server does not allow verification, the email may or may not exist
+* **Verification with SMTP server (TODO)**: A SMTP connection with the server responsible for the email will be attempted. In case the server does not allow verification, the email may or may not exist
 
 # Installation and usage
 
@@ -39,9 +39,13 @@ console.log('TODO')
 
 ### When to use Pokemail?
 
-The only feasible way to guarantee the validity of an email address is to send an email and solicit a response.
+> The only feasible way to guarantee the validity of an email address is to send an email and solicit a response.
 
-Use Pokemail when sending verification/confirmation emails is not an option. It is also useful for detecting disposable email addresses and acts as a good first line of defence.
+You should not rely solely on Pokemail when a valid email address confirmed by it's owner is required.
+In such scenarios sending a confirmation email is the way to go.
+
+Use Pokemail when sending verification/confirmation emails is not an option. It is also useful
+for detecting disposable or role-based email addresses and acts as a good first line of defence.
 
 ### What is wrong with regular expressions?
 
@@ -51,7 +55,7 @@ Using regular expressions to [validate an email](http://www.ex-parrot.com//~pdw/
 
 ### Does Pokemail always work?
 
-No, not always. As with any email validation there will always be false positives or negatives. See [should-I-use-it](#when-to-use-pokemail) section.
+No, not always. As with any email validation there will always be false positives or negatives. See [when to use it](#when-to-use-pokemail).
 
 ### Why not utilise the power of JavaScript Promises?
 
