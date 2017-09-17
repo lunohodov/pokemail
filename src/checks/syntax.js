@@ -9,6 +9,7 @@ const fullWidthCharsPattern = /[\uff01-\uff5e]/
 const spacesPattern = /[\s\u2002-\u200B\u202F\u205F\u3000\uFEFF\uDB40\uDC20]/
 /* eslint-enable max-len */
 /* eslint-enable no-control-regex */
+
 /* eslint-enable no-useless-escape */
 
 function byteLength(str) {
@@ -87,10 +88,15 @@ function checkSyntax(str) {
 }
 
 function checkSyntaxWithCallback(str, cb) {
-  const isValid = checkSyntax(str)
+  const callback = cb || (() => undefined)
 
-  if (cb) {
-    cb(null, isValid)
+  let isValid = false
+
+  try {
+    isValid = checkSyntax(str)
+    callback(null, isValid)
+  } catch (e) {
+    callback(e)
   }
 
   return isValid
