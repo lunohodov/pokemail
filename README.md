@@ -1,6 +1,6 @@
-# Email verification beyond regular expressions
+# Pokemail: Email verification beyond regular expressions
 
-[![Build Status](https://travis-ci.org/lunohodov/pokemail.svg?branch=master)](https://travis-ci.org/lunohodov/pokemail)
+[![CI Status](https://travis-ci.org/lunohodov/pokemail.svg?branch=master)](https://travis-ci.org/lunohodov/pokemail)
 
 Pokemail `[pəʊkimeɪl]` is a [Node.js](http://nodejs.org) library for email address verification.
 
@@ -10,32 +10,38 @@ therefore reachability of an email address. Without sending actual emails.
 In order to verify an email address, a series of checks are performed:
 
 * **Syntax check**: Verify whether the format of the email address is correct i.e has an `@` sign
-* **Domain/MX records check**: Check if the DNS records hold any MX entries for the email's domain. If there aren't, the domain the email points to can not receive emails
+* **Domain/MX records check**: Check if the DNS records hold any MX entries for the email's domain. If there are none, the domain can not receive emails
 * **Role-based account detection (TODO)**: Check whether the address is defined by a job rather than a person i.e `support@domain.com`
 * **Disposable email address**: Check whether the domain name of the address is used for temporary email addresses
 * **Verification with SMTP server (TODO)**: A SMTP connection with the server responsible for the email will be attempted. In case the server does not allow verification, the email may or may not exist
 
-# Installation and usage
+## Requirements
+
+TODO
+
+## Installation
 
 Install with `npm`
 
 ```bash
-npm install --save lunohodov/pokemon
+npm install --save lunohodov/pokemail
 ```
 
 Alternatively, you can use `yarn`
 
 ```bash
-yarn add lunohodov/pokemon
+yarn add lunohodov/pokemail
 ```
 
-An example usage below
+## Usage
+
+TODO
 
 ```javascript
 console.log('TODO')
 ```
 
-# FAQ
+## FAQ
 
 ### When to use Pokemail?
 
@@ -74,8 +80,16 @@ const Promise = require('bluebird')
 const promisedPokemail = Promise.promisify(require('pokemail'))
 ```
 
-# Credits :heart:
+## Licence
 
-* This project is heavily inspired by [MailTester.com](http://www.mailtester.com)
-* Disposable domains are checked using [Kickbox](https://kickbox.io). If you
-  need to verify emails in bulk or in more reliable fashion, check them out
+Pokemail is available under the MIT license. See the LICENSE file for more info.
+
+## Credits
+
+Thanks to
+
+* [MailTester.com](http://www.mailtester.com) for inspiring me
+* [Kickbox](https://kickbox.io) for their disposable domain check API 
+
+P.S. This project was created mostly as a means to learn more about email verification approaches other than regular expressions.
+
