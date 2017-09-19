@@ -55,4 +55,6 @@ function pokemail(str, callback) {
   })
 }
 
-export default pokemail
+// Use what Node currently supports
+// See https://medium.com/@kentcdodds/misunderstanding-es6-modules-upgrading-babel-tears-and-a-solution-ad2d5ab93ce0
+module.exports = pokemail

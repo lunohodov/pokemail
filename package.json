@@ -1,16 +1,22 @@
 {
   "name": "pokemail",
   "version": "0.5.0",
-  "description": "Check whether an email exists and if there are problems with it",
-  "main": "lib/pokemail.js",
+  "description": "Email verification beyond regular expressions",
+  "author": "Y.",
+  "main": "./lib/pokemail.js",
   "scripts": {
+    "precompile": "rm -rf lib/**",
     "compile": "babel --presents env --ignore *.test.js -d lib src",
-    "start": "node .",
     "test": "tape -r babel-register 'src/**/*.test.js'",
     "lint": "eslint src",
     "precommit": "npm test",
-    "prepush": "npm test"
+    "prepush": "npm test",
+    "prepublishOnly": "npm run compile"
   },
+  "files": [
+    "LICENSE",
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lunohodov/pokemail.git"
@@ -29,5 +35,8 @@
     "eslint-plugin-import": "^2.7.0",
     "husky": "^0.14.3",
     "tape": "^4.8.0"
+  },
+  "engines": {
+    "node": ">=4.8.4"
   }
 }

@@ -17,6 +17,8 @@ In order to verify an email address, a series of checks are performed:
 
 ## Requirements
 
+* Node.js >= 4.8.4
+
 TODO
 
 ## Installation
@@ -24,21 +26,24 @@ TODO
 Install with `npm`
 
 ```bash
-npm install --save lunohodov/pokemail
+npm install --save pokemail
 ```
 
 Alternatively, you can use `yarn`
 
 ```bash
-yarn add lunohodov/pokemail
+yarn add pokemail
 ```
 
 ## Usage
 
-TODO
-
 ```javascript
-console.log('TODO')
+var pokemail = require('pokemail');
+
+pokemail('test@example.org', function(err, result) {
+  // Do something interesting here ... explore `result` for now
+  console.log(result);
+});
 ```
 
 ## FAQ
