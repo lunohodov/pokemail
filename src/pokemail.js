@@ -1,9 +1,10 @@
 import checkSyntax from './checks/syntax'
 import checkDisposable from './checks/disposable'
 import checkReachability from './checks/reachability'
+import packageData from '../package.json'
 
 // eslint-disable-next-line consistent-return
-function pokemail(str, callback) {
+function verify(str, callback) {
   if (!callback) {
     throw new Error('Error-first callback is required')
   }
@@ -57,4 +58,4 @@ function pokemail(str, callback) {
 
 // Use what Node currently supports
 // See https://medium.com/@kentcdodds/misunderstanding-es6-modules-upgrading-babel-tears-and-a-solution-ad2d5ab93ce0
-module.exports = pokemail
+module.exports = { verify, version: packageData.version }

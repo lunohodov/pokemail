@@ -1,4 +1,5 @@
 import test from 'tape'
+import packageData from '../package.json'
 import pokemail from './pokemail'
 
 const testData = [
@@ -63,10 +64,15 @@ testData.forEach((data) => {
 
   test(name, (t) => {
     t.plan(1)
-    pokemail(email, (err, actual) => {
+    pokemail.verify(email, (err, actual) => {
       t.deepEqual(actual, expected)
       t.end()
     })
   })
+})
+
+test('version number is same as declared in package.json', (t) => {
+  t.is(pokemail.version, packageData.version)
+  t.end()
 })
 

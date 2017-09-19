@@ -17,9 +17,7 @@ In order to verify an email address, a series of checks are performed:
 
 ## Requirements
 
-* Node.js >= 4.8.4
-
-TODO
+* Node.js >= v4.8.4
 
 ## Installation
 
@@ -40,7 +38,11 @@ yarn add pokemail
 ```javascript
 var pokemail = require('pokemail');
 
-pokemail('test@example.org', function(err, result) {
+// Get module's version
+console.log(pokemail.version)
+
+// Verify an email
+pokemail.verify('test@example.org', function(err, result) {
   // Do something interesting here ... explore `result` for now
   console.log(result);
 });
