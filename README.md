@@ -119,8 +119,9 @@ This project is licensed under the MIT License - see the [license](LICENSE.md) f
 
 ## Acknowledgments
 
+This project was created mostly as a means to learn more about email verification approaches other than regular expressions.
+
+Thanks to
 * [MailTester.com](http://www.mailtester.com) for inspiring me
 * [Kickbox](https://kickbox.io) for their disposable domain check API 
-
-P.S. This project was created mostly as a means to learn more about email verification approaches other than regular expressions.
 
