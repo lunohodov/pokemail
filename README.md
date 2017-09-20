@@ -107,13 +107,17 @@ const Promise = require('bluebird')
 const promisedPokemail = Promise.promisify(require('pokemail'))
 ```
 
+## Authors
+
+* **Yanko Ivanov** - *Initial work*
+
+See also the list of [contributors](https://github.com/lunohodov/pokemail/graphs/contributors) who participated in this project.
+
 ## Licence
 
-Pokemail is available under the MIT license. See the LICENSE file for more info.
+This project is licensed under the MIT License - see the [license](LICENSE.md) file for details.
 
-## Credits
-
-Thanks to
+## Acknowledgments
 
 * [MailTester.com](http://www.mailtester.com) for inspiring me
 * [Kickbox](https://kickbox.io) for their disposable domain check API 
