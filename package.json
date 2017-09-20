@@ -11,7 +11,8 @@
     "lint": "eslint src",
     "precommit": "npm test",
     "prepush": "npm test",
-    "prepublishOnly": "npm run compile"
+    "prepublishOnly": "npm run compile",
+    "prepack": "npm run compile"
   },
   "files": [
     "LICENSE",
