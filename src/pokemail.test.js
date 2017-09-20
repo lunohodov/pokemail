@@ -14,10 +14,10 @@ const testData = [
     },
   },
   {
-    name: 'disposable email is deliverable',
+    name: 'disposable email is risky',
     expected: {
-      result: 'deliverable',
-      reason: 'accepted_email',
+      result: 'risky',
+      reason: 'low_quality',
       disposable: true,
       email: 'pokemail@mailinator.com',
       success: true,
@@ -47,7 +47,7 @@ const testData = [
     name: 'email domain with MX record is deliverable',
     expected: {
       result: 'deliverable',
-      reason: 'accepted_email',
+      reason: 'low_deliverability',
       disposable: false,
       email: 'lunohodov@gmail.com',
       success: true,

@@ -44,8 +44,8 @@ function verify(str, callback) {
 
     if (isDisposable) {
       callback(null, makeResult({
-        result: 'deliverable',
-        reason: 'accepted_email',
+        result: 'risky',
+        reason: 'low_quality',
         disposable: true,
       }))
       return
@@ -59,8 +59,8 @@ function verify(str, callback) {
 
       callback(null, makeResult({
         result: reachable ? 'deliverable' : 'undeliverable',
-        reason: reachable ? 'accepted_email' : 'rejected_email',
-        disposable: isDisposable,
+        reason: reachable ? 'low_deliverability' : 'invalid_domain',
+        disposable: false, // TODO
       }))
     })
   })

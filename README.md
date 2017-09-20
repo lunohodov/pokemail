@@ -36,17 +36,37 @@ yarn add pokemail
 ## Usage
 
 ```javascript
-var pokemail = require('pokemail');
+const pokemail = require('pokemail');
 
 // Get module's version
 console.log(pokemail.version)
 
 // Verify an email
-pokemail.verify('test@example.org', function(err, result) {
-  // Do something interesting here ... explore `result` for now
-  console.log(result);
+pokemail.verify('test@example.org', (err, status) => {
+  if (err) {
+    // Handle error
+  }
+  // See the documentation for status
+  console.log(status);
 });
 ```
+
+### Status information
+
+A successful verification will result in the following status object
+
+* **result** `string` - Verification result having one of the following values
+  * `deliverable` - The email is syntactically valid and is not disposable
+  * `risky` - The address is disposable
+  * `undeliverable` - The address does not exist or is syntactically incorrect
+* **reason** `string` - Indicates the reason for the result. It can have one of the following values
+  * `low_deliverability` - Email address appears to be deliverable, but deliverability cannot be guaranteed
+  * `low_quality` - Email address has quality issues that make it low value address
+  * `invalid_email` - The given email does not have a valid syntax
+  * `invalid_domain` - The domain of the email does not exist or is unable to receive emails (i.e. no MX record)
+* **disposable** `boolean` - Indicates whether the address is disposable
+* **email** `string` - The email this status applies to
+* **success** `boolean` - `true` if there are no errors
 
 ## FAQ
 
