@@ -3,7 +3,13 @@ import checkDisposable from './checks/disposable'
 import checkReachability from './checks/reachability'
 import packageData from '../package.json'
 
-// eslint-disable-next-line consistent-return
+/**
+ * Verifies the given email address against a set of predefined checks.
+ *
+ * @param {String} str - The email address to verify
+ * @param {Function} callback - An error-first callback
+ * @returns undefined
+ */
 function verify(str, callback) {
   if (!callback) {
     throw new Error('Error-first callback is required')
@@ -22,32 +28,36 @@ function verify(str, callback) {
   const reject = err => callback(err, makeResult({ result: 'unknown', reason: err.message, success: false }))
 
   if (!checkSyntax(str)) {
-    return callback(null, makeResult({
+    callback(null, makeResult({
       result: 'undeliverable',
       reason: 'invalid_email',
     }))
+    return
   }
 
   // eslint-disable-next-line consistent-return
   checkDisposable(str, (errDisposable, isDisposable) => {
     if (errDisposable) {
-      return reject(errDisposable)
+      reject(errDisposable)
+      return
     }
 
     if (isDisposable) {
-      return callback(null, makeResult({
+      callback(null, makeResult({
         result: 'deliverable',
         reason: 'accepted_email',
         disposable: true,
       }))
+      return
     }
 
     checkReachability(str, (errHostname, reachable) => {
       if (errHostname) {
-        return reject(errHostname)
+        reject(errHostname)
+        return
       }
 
-      return callback(null, makeResult({
+      callback(null, makeResult({
         result: reachable ? 'deliverable' : 'undeliverable',
         reason: reachable ? 'accepted_email' : 'rejected_email',
         disposable: isDisposable,
