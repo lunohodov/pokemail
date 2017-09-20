@@ -2,7 +2,7 @@
 
 [![CI Status](https://travis-ci.org/lunohodov/pokemail.svg?branch=master)](https://travis-ci.org/lunohodov/pokemail)
 
-Pokemail `[pəʊkimeɪl]` is a [Node.js](http://nodejs.org) library for email address verification.
+Pokemail (pronounced "poke-email") is a [Node.js](http://nodejs.org) library for email address verification.
 
 Apart from mere syntax verification, it talks to DNS and SMTP servers to determine the validity and
 therefore reachability of an email address. Without sending actual emails.
