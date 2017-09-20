@@ -17,7 +17,7 @@ In order to verify an email address, a series of checks are performed:
 
 ## Requirements
 
-* Node.js >= v4.8.4
+* Node.js >= 6.11.3
 
 ## Installation
 

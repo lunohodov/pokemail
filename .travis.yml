@@ -2,7 +2,6 @@ language: node_js
 node_js:
   - "node"
   - "lts/*"
-  - "5"
-  - "4"
+  - "6.11.3"
 notifications:
   email: false
